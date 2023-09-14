@@ -1,1 +1,66 @@
-<h1>hiiiiiiiiiiiiiiiii</h1>
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>
+</head>
+<body>
+
+<h2>Vedios</h2>
+{% comment %} <p>How to create side-by-side images with the CSS float property:</p> {% endcomment %}
+
+<body class="sb-nav-fixed">
+    <div id="layoutSidenav_content">
+        <main>
+            {% comment %} <div class="container-fluid">
+                <div class="col-md-6">
+                    <div class="card-body">
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{form.as_p}}
+                            <button type="submit">Submit</button>
+                        </form>
+                        </div>
+                    </div>
+                </div> {% endcomment %}
+
+            <div class="container-fluid">
+                <div class="col-md-6">
+                    <div class="card-body">
+                        <div class="row">
+                            {% for item in obj %}
+                                <div class="column">
+                                    <div class="col-md-6">
+                                    <h5><b>{{ item.name}}</b></h5>
+                                    <video width="320" height="240" controls>
+                                        <source src="{{ item.vedio_file.url }}" type="video/mp4">
+                                            Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+   
+</body>
+</html>
