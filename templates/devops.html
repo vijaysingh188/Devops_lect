@@ -28,17 +28,73 @@
 <body class="sb-nav-fixed">
     <div id="layoutSidenav_content">
         <main>
-            {% comment %} <div class="container-fluid">
+            <div class="container-fluid">
                 <div class="col-md-6">
                     <div class="card-body">
-                        <form method="post" enctype="multipart/form-data">
+                        <form method="POST">
                             {% csrf_token %}
-                            {{form.as_p}}
-                            <button type="submit">Submit</button>
-                        </form>
+                            <label for="Courses">Choose Courses:</label>
+                            <select name="Courses" id="Courses">
+                                <option value="" selected disabled hidden>Choose here</option>
+                                <option value="AWS">AWS</option>
+                                <option value="Devops">Devops</option>
+                                <option value="Others">Others</option>
+                               
+                              </select><br><br>
+                              <label for="Month">Choose Month:</label>
+                              <select name="Month" id="Month">
+                                <option value="" selected disabled hidden>Choose here</option>
+                                <option value="Jan">Jan</option>
+                                <option value="Feb">Feb</option>
+                                <option value="Mar">Mar</option>
+
+                                <option value="Apr">Apr</option>
+                                <option value="May">May</option>
+                                <option value="Jun">Jun</option>
+
+                                <option value="Jul">Jul</option>
+                                <option value="Aug">Aug</option>
+                                <option value="Sep">Sep</option>
+
+                                <option value="Oct">Oct</option>
+                                <option value="Nov">Nov</option>
+                                <option value="Dec">Dec</option>
+                               
+                              </select><br><br>
+                              <label for="date">Choose Date:</label>
+                                <input type="date" id="date" name="date"><br><br>
+                            <input type="submit" value="Submit">
+                          </form> 
+                    
+                    </div>
+
+                </div>
+            </div>
+
+{% if mydict %}
+            <div class="container-fluid">
+                <div class="col-md-6">
+                    <div class="card-body">
+                        <div class="row">
+                            {% for item in mydict.new_obj %}
+                                <div class="column">
+                                    <div class="col-md-6">
+                                    <h5><b>{{ item.name}}</b></h5>
+                                    <video width="320" height="240" controls>
+                                        <source src="{{ item.vedio_file.url }}" type="video/mp4">
+                                            Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                                </div>
+                            {% endfor %}
                         </div>
                     </div>
-                </div> {% endcomment %}
+                </div>
+            </div>
+        </main>
+    </div>
+{% endif %}
+        
 
             <div class="container-fluid">
                 <div class="col-md-6">

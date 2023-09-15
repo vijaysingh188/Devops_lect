@@ -35,3 +35,7 @@ class Devops(models.Model):
     updated_on = models.DateField(auto_now_add=True, blank=False, null=False)
     comments  = models.CharField(max_length=255,null=True,blank=True)
 
+    def __str__(self):
+        return "{}/{}".format(self.name,self.choose_month)
+    
+
