@@ -9,8 +9,6 @@ from devops_app.forms import DevopsUploadForm
 
 class DevopsClassBasedView(TemplateView):
     def get(self,request):
-        
-        # obj = Devops.objects.values("name","vedio_file","choose_month","Date")
         obj = Devops.objects.all()[:3]
 
         return render(request,'devops.html',{'obj':obj})
@@ -41,5 +39,5 @@ class DevopsUploadFile(TemplateView):
         form = DevopsUploadForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            # return redirect('DevopsClassBasedView') 
-        return render(request,'devops.html')
+            return redirect('upload_lect') 
+        return render(request,'devops_upload.html')
